@@ -2,3 +2,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.btn-green {
+  @apply bg-green-500 opacity-100 hover:opacity-80 hover:bg-green-300 rounded font-bold text-white hover:text-green-700 items-center text-center align-middle flex justify-center cursor-pointer;
+}
+
+.btn-yellow {
+  @apply bg-yellow-400 hover:bg-yellow-200 opacity-100 hover:opacity-80 rounded font-bold text-white hover:text-yellow-700 items-center text-center align-middle flex justify-center cursor-pointer;
+}
