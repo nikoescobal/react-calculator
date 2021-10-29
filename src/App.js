@@ -1,19 +1,20 @@
-import './App.css';
+/* eslint-disable import/no-cycle */
+import React from 'react';
+import Calculator from './components/Calculator';
 
-function App() {
-  return (
-    // eslint-disable-next-line react/jsx-no-duplicate-props
-    <div className="App" className="p-6 items-center justify-center">
-      <h1 className="text-blue-400 font-nunito font-extrabold">
-        {' '}
-        Hello World!
-        {' '}
-      </h1>
-      {' '}
-      <p className="tracking-widest"> This is my first React App. </p>
-      {' '}
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  render() {
+    return (
+      <div>
+        <Calculator />
+      </div>
+    );
+  }
 }
 
 export default App;
