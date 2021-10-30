@@ -1,15 +1,66 @@
 import React from 'react';
 import '../index';
-// import calculate from '../logic/calculate';
+import calculate from '../logic/calculate';
 
 class Calculator extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      operators: '+-x%÷',
+      numbers: '0123456789',
+      total: '',
+      next: '',
+      operation: '',
+      completed: false,
+      finalObject: {},
+    };
   }
 
+  componentDidUpdate(previousProps, previousState) {
+    if (
+      previousState.total !== this.state.total
+      || previousState.next !== this.state.next
+      || previousState.operation !== this.state.operation
+    ) {
+      const object = {
+        total: this.state.total,
+        next: this.state.next,
+        operation: this.state.operation,
+      };
+
+      console.log(object);
+
+      if (object.total && object.next && object.operation) {
+        this.passObject(object);
+      }
+    }
+  }
+
+  passObject = (param) => {
+    this.setState({ finalObject: param });
+    this.setState({ completed: true });
+  };
+
   handleButtonEvent = (event) => {
-    console.log(event.target.name);
+    if (this.state.operators.includes(event.target.name)) {
+      console.log('yes');
+      this.setState({ operation: event.target.name });
+    }
+
+    if (this.state.numbers.includes(event.target.name)) {
+      if (this.state.total === '') {
+        this.setState({ total: event.target.name });
+      } else {
+        this.setState({ next: event.target.name });
+      }
+    }
+
+    if (event.target.name === '=') {
+      if (this.state.completed) {
+        const result = calculate(this.state.finalObject, '=');
+        console.log(result);
+      }
+    }
   };
 
   render() {
