@@ -13,6 +13,7 @@ class Calculator extends React.Component {
       operation: '',
       completed: false,
       finalObject: {},
+      expression: '',
     };
   }
 
@@ -28,8 +29,6 @@ class Calculator extends React.Component {
         operation: this.state.operation,
       };
 
-      console.log(object);
-
       if (object.total && object.next && object.operation) {
         this.passObject(object);
       }
@@ -43,22 +42,31 @@ class Calculator extends React.Component {
 
   handleButtonEvent = (event) => {
     if (this.state.operators.includes(event.target.name)) {
-      console.log('yes');
       this.setState({ operation: event.target.name });
+      this.setState({ expression: event.target.name });
     }
 
     if (this.state.numbers.includes(event.target.name)) {
       if (this.state.total === '') {
         this.setState({ total: event.target.name });
+        this.setState({ expression: event.target.name });
       } else {
         this.setState({ next: event.target.name });
+        const exp = this.state.expression;
+        this.setState({
+          expression: `${exp} ${event.target.name}`,
+        });
       }
     }
 
     if (event.target.name === '=') {
       if (this.state.completed) {
         const result = calculate(this.state.finalObject, '=');
-        console.log(result);
+        if (result) {
+          this.setState({ total: result.total });
+          this.setState({ next: result.next });
+          this.setState({ operation: result.operation });
+        }
       }
     }
   };
@@ -67,7 +75,7 @@ class Calculator extends React.Component {
     return (
       <div className="grid grid-cols-4 h-screen bg-blue-50 gap-1 p-4 mx-auto w-full">
         <div className="bg-blue-500 rounded font-nunito text-2xl col-span-4 px-6 text-white items-center text-center align-middle flex justify-end">
-          0
+          {this.state.completed ? this.state.total : this.state.expression}
         </div>
         <>
           <button
