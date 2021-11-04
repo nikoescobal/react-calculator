@@ -8,32 +8,18 @@ const Calculator = () => {
   const [total, setTotal] = useState('');
   const [next, setNext] = useState('');
   const [operation, setOperation] = useState('');
-  const [expression, setExpression] = useState('0');
+  const [expression, setExpression] = useState('');
   const [completed, setCompleted] = useState(false);
-  const [finalObject, setFinalObject] = useState({});
+  const [finalObject, setFinalObject] = useState();
 
-  const passObject = (param) => {
-    setFinalObject(param);
-    setCompleted(true);
-  };
-
-  useEffect((previousProps, previousState) => {
-    if (
-      previousState !== total
-      || previousState !== next
-      || previousState !== operation
-    ) {
-      const object = {
-        total,
-        next,
-        operation,
-      };
-
-      if (object.total && object.next && object.operation) {
-        passObject(object);
-      }
+  const updateNext = (param) => {
+    if (next === '') {
+      setNext(param);
+    } else if (next) {
+      setNext(`${next}${param}`);
     }
-  });
+    setExpression(`${expression}${param}`);
+  };
 
   const handleButtonEvent = (event) => {
     if (operators.includes(event.target.name)) {
@@ -42,13 +28,15 @@ const Calculator = () => {
     }
 
     if (numbers.includes(event.target.name)) {
-      if (total === '') {
-        setTotal(event.target.name);
-        setExpression(event.target.name);
+      if (finalObject.operation === '') {
+        if (total === '') {
+          setTotal(event.target.name);
+        } else if (total) {
+          setTotal(`${total}${event.target.name}`);
+        }
+        setExpression(`${expression}${event.target.name}`);
       } else {
-        setNext(event.target.name);
-        // const exp = expression;
-        setExpression(event.target.name);
+        updateNext(event.target.name);
       }
     }
 
@@ -59,6 +47,7 @@ const Calculator = () => {
           setTotal(result.total);
           setNext(result.next);
           setOperation(result.operation);
+          setExpression(result.total);
         }
       }
     }
@@ -66,14 +55,27 @@ const Calculator = () => {
       setTotal('');
       setNext('');
       setOperation('');
-      setExpression('0');
+      setExpression('');
     }
   };
+
+  useEffect(() => {
+    const object = {
+      total,
+      next,
+      operation,
+    };
+    setFinalObject(object);
+
+    if (object.total && object.next && object.operation) {
+      setCompleted(true);
+    }
+  }, [total, next, operation]);
 
   return (
     <div className="grid grid-cols-4 h-screen bg-blue-50 gap-1 p-4 mx-auto w-full">
       <div className="bg-blue-500 rounded font-nunito text-2xl col-span-4 px-6 text-white items-center text-center align-middle flex justify-end">
-        {completed ? total : expression}
+        {expression}
       </div>
       <>
         <button
