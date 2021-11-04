@@ -18,7 +18,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "homepage": "http://nikoescobal.github.io/react-template",
+    "homepage": "http://nikoescobal.github.io/react-calculator",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
