@@ -1,10 +1,10 @@
+/* eslint-disable max-len */
 import React from 'react';
 
 const Quotes = () => (
-  <div className="quote">
+  <div className="Quotes">
     <p>
-      Mathmatics is not about numbers, equations, computations, or algorithms:
-      it is about understanding.-William Paul Thurston
+      “ Life is a math equation. In order to gain the most, you have to know how to convert negatives into positives.” - Steven Wright.
     </p>
   </div>
 );
