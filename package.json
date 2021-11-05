@@ -18,7 +18,7 @@
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "react-calculator -d build",
-    "homepage": "http://nikoescobal.github.io/react-calculator/",
+    "homepage": "https://nikoescobal.github.io/react-calculator/",
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
