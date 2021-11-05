@@ -11,12 +11,12 @@ const Nav = () => {
     },
     {
       id: 2,
-      path: '/App',
+      path: '/calculator',
       text: 'Calulator',
     },
     {
       id: 3,
-      path: '/Quotes',
+      path: '/quotes',
       text: 'Quotes',
     },
   ];
