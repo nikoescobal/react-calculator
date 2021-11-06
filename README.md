@@ -1,6 +1,8 @@
-# React JS Template
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-This repo contains all the necessary files needed to quickly get started with building an application with React -- linters, create react app, dependencies, and Tailwind.
+# React Calculator
+
+> In this project, I built a calculator app with React. The website allows users to navigate between three pages -- a home page, a page where you can see math quotes, and a page where you can use the calculator to perform basic math functions.
 
 ## Built with
 
@@ -15,19 +17,18 @@ This repo contains all the necessary files needed to quickly get started with bu
 
 ## Live Demo
 
-[Live Link]()
+[Click here to see the project](https://reactapp-calculator.netlify.app/)
 
 
 ## Getting Started
 
-To get a local copy up and running follow these simple example steps.
-
+**To get a local copy up and running follow these simple example steps.**
 ## Setup
 
 - Clone this repository. 
 - Run ``npm i`` or ``yarn`` to install dependencies required to start the project
-- Using node v15.11.0 (npm v7.6.0) 
-- Run ``npm start`` to trigger ``craco start``
+- Make sure to use node v15.11.0 (npm v7.6.0) 
+- Run ``npm start``
 
 ## Run Tests
 
@@ -58,10 +59,10 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Microverse
-- The Odin Project
 
 ## 📝 MIT License
 
 This project makes use of the MIT license.
 
 Just clone and then run npm install to make it work.
+
